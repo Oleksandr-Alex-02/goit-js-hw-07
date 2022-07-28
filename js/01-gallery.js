@@ -3,6 +3,25 @@ import { galleryItems } from "./gallery-items.js";
 
 const divGallery = document.querySelector(".gallery");
 
+divGallery.addEventListener("click", selectImg);
+
+function selectImg(eve) {
+  eve.preventDefault();
+  if (eve.target.nodeName !== "IMG") {
+    return;
+  }
+  const imadgs = eve.target.dataset.source;
+  const imadgsAlt = eve.target.src;
+
+  const instance = basicLightbox.create(
+    `
+    <img src="${imadgs}" alt="${imadgsAlt}" width="800" height="600">
+    `
+  );
+
+  instance.show();
+}
+
 function galereaImag(galleryItems) {
   const array = galleryItems
     .map(({ preview, original, description }) => {
@@ -10,10 +29,10 @@ function galereaImag(galleryItems) {
         <div class="gallery__item">
           <a class="gallery__link" href="${original}">
             <img
-            class="gallery__image"
-            src="${preview}"
-            data-source="${original}"
-            alt="${description}"
+              class="gallery__image"
+              src="${preview}"
+              data-source="${original}"
+              alt="${description}"
             />
           </a>
         </div>`;
@@ -24,6 +43,4 @@ function galereaImag(galleryItems) {
 }
 
 const arr = galereaImag(galleryItems);
-console.log(arr);
-
 divGallery.insertAdjacentHTML("afterbegin", arr);
