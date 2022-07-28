@@ -42,5 +42,18 @@ function galereaImag(galleryItems) {
   return array;
 }
 
-const arr = galereaImag(galleryItems);
-divGallery.insertAdjacentHTML("afterbegin", arr);
+const renderImg = galereaImag(galleryItems);
+divGallery.insertAdjacentHTML("afterbegin", renderImg);
+
+document.addEventListener("keydown", escape);
+
+function escape(eve) {
+  if (eve.code !== "Escape") {
+    return;
+  }
+  const modal = document.querySelector(".basicLightbox");
+
+  if (modal) {
+    modal.remove();
+  }
+}
