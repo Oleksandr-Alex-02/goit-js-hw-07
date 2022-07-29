@@ -21,6 +21,7 @@ const nevImags = galereaImag(galleryItems);
 divGallery.insertAdjacentHTML("afterbegin", nevImags);
 
 const lightbox = new SimpleLightbox(".gallery a", {
+  captionDelay: 250,
   captionsData: "alt",
   sourceAttr: "href",
 });

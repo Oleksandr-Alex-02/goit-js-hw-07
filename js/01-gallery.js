@@ -23,7 +23,7 @@ function selectImg(eve) {
 }
 
 function galereaImag(galleryItems) {
-  const array = galleryItems
+  return galleryItems
     .map(({ preview, original, description }) => {
       return `
         <div class="gallery__item">
@@ -38,8 +38,6 @@ function galereaImag(galleryItems) {
         </div>`;
     })
     .join("");
-
-  return array;
 }
 
 const renderImg = galereaImag(galleryItems);
@@ -51,9 +49,13 @@ function escape(eve) {
   if (eve.code !== "Escape") {
     return;
   }
+
   const modal = document.querySelector(".basicLightbox");
 
   if (modal) {
-    modal.remove();
+    modal.classList.remove("basicLightbox--visible");
+    setTimeout(() => {
+      modal.remove();
+    }, 250);
   }
 }
