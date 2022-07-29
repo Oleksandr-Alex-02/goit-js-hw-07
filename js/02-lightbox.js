@@ -20,34 +20,16 @@ function galereaImag(galleryItems) {
 const nevImags = galereaImag(galleryItems);
 divGallery.insertAdjacentHTML("afterbegin", nevImags);
 
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  sourceAttr: "href",
+});
+
+lightbox.next();
+
 function selectImg(eve) {
   eve.preventDefault();
   if (eve.target.nodeName !== "IMG") {
     return;
   }
-  const a = document.querySelector(".gallery__item");
-  const eveHref = a.href;
-
-  const imadgsAlt = eve.target.alt;
-  const imadgsSrc = eve.target.src;
-
-  const lightbox = new SimpleLightbox(
-    ".gallery a",
-    `
-      <a href="${imadgsSrc}">
-        <img src="${eveHref}" alt="${imadgsAlt}" title="${imadgsAlt}" />
-      </a>
-    `
-  );
-
-  // var lightbox = $(".gallery a").simpleLightbox(
-  //   `
-  //   <a href="${imadgsSrc}">
-  //     // <img src="${eveHref}" alt="${imadgsAlt}" title="${imadgsAlt}" />
-  //     //{" "}
-  //   </a>
-  //   `
-  // );
-
-  // lightbox.next();
 }
