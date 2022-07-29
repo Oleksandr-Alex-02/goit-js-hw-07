@@ -1,25 +1,8 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
 
 const divGallery = document.querySelector(".gallery");
 
 divGallery.addEventListener("click", selectImg);
-
-function selectImg(eve) {
-  eve.preventDefault();
-  if (eve.target.nodeName !== "IMG") {
-    return;
-  }
-  const imadgs = eve.target.dataset.source;
-  const imadgsAlt = eve.target.src;
-
-  const arr = `<img
-    class="gallery__image"
-    src="${imadgsAlt}"
-    alt=""
-    title="Beautiful Image"
-  />`;
-}
 
 function galereaImag(galleryItems) {
   const array = galleryItems
@@ -34,5 +17,37 @@ function galereaImag(galleryItems) {
   return array;
 }
 
-const arr = galereaImag(galleryItems);
-divGallery.insertAdjacentHTML("afterbegin", arr);
+const nevImags = galereaImag(galleryItems);
+divGallery.insertAdjacentHTML("afterbegin", nevImags);
+
+function selectImg(eve) {
+  eve.preventDefault();
+  if (eve.target.nodeName !== "IMG") {
+    return;
+  }
+  const a = document.querySelector(".gallery__item");
+  const eveHref = a.href;
+
+  const imadgsAlt = eve.target.alt;
+  const imadgsSrc = eve.target.src;
+
+  const lightbox = new SimpleLightbox(
+    ".gallery a",
+    `
+      <a href="${imadgsSrc}">
+        <img src="${eveHref}" alt="${imadgsAlt}" title="${imadgsAlt}" />
+      </a>
+    `
+  );
+
+  // var lightbox = $(".gallery a").simpleLightbox(
+  //   `
+  //   <a href="${imadgsSrc}">
+  //     // <img src="${eveHref}" alt="${imadgsAlt}" title="${imadgsAlt}" />
+  //     //{" "}
+  //   </a>
+  //   `
+  // );
+
+  // lightbox.next();
+}
