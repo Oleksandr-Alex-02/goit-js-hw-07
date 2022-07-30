@@ -5,6 +5,8 @@ const divGallery = document.querySelector(".gallery");
 
 divGallery.addEventListener("click", selectImg);
 
+// відкритя слайдера!!!
+
 function selectImg(eve) {
   eve.preventDefault();
   if (eve.target.nodeName !== "IMG") {
@@ -19,11 +21,10 @@ function selectImg(eve) {
     `
   );
 
-  const aaa = instance.show();
-  console.log(aaa);
-  const visible = instance.visible();
-  console.log(visible);
+  instance.show();
 }
+
+// рейдінг галереї!!!
 
 function galereaImag(galleryItems) {
   return galleryItems
@@ -46,14 +47,18 @@ function galereaImag(galleryItems) {
 const renderImg = galereaImag(galleryItems);
 divGallery.insertAdjacentHTML("afterbegin", renderImg);
 
-document.addEventListener("keydown", escape);
+// Закритя слайдера кнопкой escape!!!
+
+divGallery.addEventListener("click", dhdh);
+
+function dhdh() {
+  document.addEventListener("keydown", escape);
+}
 
 function escape(eve) {
   if (eve.code !== "Escape") {
     return;
   }
-
-  console.log("123");
 
   const modal = document.querySelector(".basicLightbox");
 
@@ -64,5 +69,3 @@ function escape(eve) {
     }, 250);
   }
 }
-
-// document.removeEventListener("keydown", escape);
