@@ -2,8 +2,6 @@ import { galleryItems } from "./gallery-items.js";
 
 const divGallery = document.querySelector(".gallery");
 
-divGallery.addEventListener("click", selectImg);
-
 function galereaImag(galleryItems) {
   const array = galleryItems
     .map(({ preview, original, description }) => {
@@ -25,12 +23,3 @@ const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   sourceAttr: "href",
 });
-
-lightbox.next();
-
-function selectImg(eve) {
-  eve.preventDefault();
-  if (eve.target.nodeName !== "IMG") {
-    return;
-  }
-}

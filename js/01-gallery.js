@@ -19,7 +19,10 @@ function selectImg(eve) {
     `
   );
 
-  instance.show();
+  const aaa = instance.show();
+  console.log(aaa);
+  const visible = instance.visible();
+  console.log(visible);
 }
 
 function galereaImag(galleryItems) {
@@ -50,6 +53,8 @@ function escape(eve) {
     return;
   }
 
+  console.log("123");
+
   const modal = document.querySelector(".basicLightbox");
 
   if (modal) {
@@ -59,3 +64,5 @@ function escape(eve) {
     }, 250);
   }
 }
+
+// document.removeEventListener("keydown", escape);
