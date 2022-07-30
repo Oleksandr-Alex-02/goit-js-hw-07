@@ -22,6 +22,7 @@ function selectImg(eve) {
   );
 
   instance.show();
+  document.addEventListener("keydown", escape);
 }
 
 // рейдінг галереї!!!
@@ -49,12 +50,6 @@ divGallery.insertAdjacentHTML("afterbegin", renderImg);
 
 // Закритя слайдера кнопкой escape!!!
 
-divGallery.addEventListener("click", dhdh);
-
-function dhdh() {
-  document.addEventListener("keydown", escape);
-}
-
 function escape(eve) {
   if (eve.code !== "Escape") {
     return;
@@ -67,5 +62,6 @@ function escape(eve) {
     setTimeout(() => {
       modal.remove();
     }, 250);
+    document.removeEventListener("keydown", escape);
   }
 }
