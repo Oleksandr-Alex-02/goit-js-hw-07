@@ -18,11 +18,18 @@ function selectImg(eve) {
   const instance = basicLightbox.create(
     `
     <img src="${imadgs}" alt="${imadgsAlt}" width="800" height="600">
-    `
+    `,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", escape);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", escape);
+      },
+    }
   );
 
   instance.show();
-  document.addEventListener("keydown", escape);
 }
 
 // рейдінг галереї!!!
